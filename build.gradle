@@ -1,0 +1,87 @@
+buildscript {
+    ext {
+        springBootVersion = '2.6.15'
+        lombokVersion = '1.18.20'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+subprojects {
+    // java 프로젝트만 적용 (exclude directory module)
+    if (project.name.startsWith("gpex-")) {
+
+        println("[project name] : " + project.name);
+
+        apply plugin: 'java'
+        apply plugin: 'org.springframework.boot'
+        apply plugin: 'io.spring.dependency-management'
+
+        group 'com.gpex'
+        version '1.0-SNAPSHOT'
+        sourceCompatibility = 11
+
+        repositories {
+            mavenCentral()
+        }
+
+        dependencies {
+            // Spring Web
+            implementation 'org.springframework.boot:spring-boot-starter-web'
+            annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
+            implementation 'org.springframework.boot:spring-boot-configuration-processor'
+
+            // jasypt
+            // Apache
+            implementation 'org.apache.commons:commons-lang3:3.11'
+            implementation 'org.apache.commons:commons-text:1.9'
+            implementation 'org.apache.commons:commons-io:1.3.2'
+
+            // Lombok
+            annotationProcessor 'org.projectlombok:lombok'
+            implementation 'org.projectlombok:lombok'
+
+            // Spring test
+            testImplementation 'org.springframework.boot:spring-boot-starter-test'
+
+        }
+
+        test {
+            useJUnitPlatform()
+        }
+    }
+}
+
+/* multi project dependencies */
+// 1 depth
+
+// 2 depth - databases
+project(':components:databases:gpex-database') {
+    dependencies {
+        implementation project(':components:common:gpex-common')
+    }
+}
+
+// 3 depth - projects
+project(':components:projects:gpex-admin-api') {
+    dependencies {
+        implementation project(':components:common:gpex-common')
+        implementation project(':components:databases:gpex-database')
+    }
+}
+project(':components:projects:gpex-app-api') {
+    dependencies {
+        implementation project(':components:common:gpex-common')
+        implementation project(':components:databases:gpex-database')
+    }
+}
+project(':components:projects:gpex-scheduler') {
+    dependencies {
+        implementation project(':components:common:gpex-common')
+        implementation project(':components:databases:gpex-database')
+    }
+}

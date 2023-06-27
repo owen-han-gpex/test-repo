@@ -1,0 +1,38 @@
+# Common Config
+server:
+  port: 0
+
+# Common Config
+spring:
+  profiles:
+    active: default
+    include:
+      - common
+      - database
+      - override
+
+  output:
+    ansi:
+      enabled: always
+
+---
+
+# Local Config
+spring:
+  config:
+    activate:
+      on-profile: default
+
+scheduler:
+  message: 30000  # fixedDelay (n)ms
+
+logging:
+  file:
+    name: ./logs/gpex-scheduler_local.log
+  logback:
+    rollingpolicy:
+      file-name-pattern: "./logs/gpex-scheduler_local.log.%d{yyyy-MM-dd}.%i"
+      max-file-size: 100MB
+
+  level:
+    root: info

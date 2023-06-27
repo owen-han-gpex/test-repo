@@ -1,0 +1,42 @@
+server:
+  port: 3000
+
+# Common Config
+spring:
+  profiles:
+    active: default
+    include:
+      - common
+      - database
+
+  output:
+    ansi:
+      enabled: always
+
+---
+
+# Local Config
+spring:
+  config:
+    activate:
+      on-profile: default
+
+  servlet:
+    multipart:
+      max-file-size: 30MB
+      max-request-size: 30MB
+  devtools:
+    restart:
+      enabled: true
+    livereload:
+      enabled: true
+  freemarker:
+    cache: false
+
+logging:  # Log Setting
+  file:
+    name: ./logs/gpex-app-api.log
+  logback:
+    rollingpolicy:
+      file-name-pattern: "./logs/gpex-app-api.log.%d{yyyy-MM-dd}.%i"
+      max-file-size: 100MB

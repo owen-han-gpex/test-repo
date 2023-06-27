@@ -1,0 +1,25 @@
+plugins {
+    id 'application'
+    id 'idea'
+}
+
+dependencies {
+    // Spring boot
+
+    // Spring security
+
+    // Spring Mobile
+
+    // JWT Token
+
+    // devtools
+//    implementation 'org.springframework.boot:spring-boot-devtools'
+}
+
+bootJar {
+    enabled = true
+}
+
+application {
+    mainClassName("com.gpex.admin.api.AdminApiApplication")
+}

@@ -1,0 +1,21 @@
+rootProject.name = 'gpex-wallet-backend'
+
+// 1 depth
+include 'components:common:gpex-common'
+findProject(':components:common:gpex-common')?.name = 'gpex-common'
+
+// 2 depth - databases
+include 'components:databases:gpex-database'
+findProject(':components:databases:gpex-database')?.name = 'gpex-database'
+include 'components'
+
+// 3 depth - projects
+include 'components:projects:gpex-admin-api'
+findProject(':components:projects:gpex-admin-api')?.name = 'gpex-admin-api'
+include 'components:projects:gpex-app-api'
+findProject(':components:projects:gpex-app-api')?.name = 'gpex-app-api'
+include 'components:projects:gpex-scheduler'
+findProject(':components:projects:gpex-scheduler')?.name = 'gpex-scheduler'
+include 'components:projects'
+findProject(':components:projects')?.name = 'projects'
+

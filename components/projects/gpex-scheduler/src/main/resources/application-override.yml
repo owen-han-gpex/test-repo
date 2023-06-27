@@ -1,0 +1,43 @@
+# Included properties fields override
+
+spring:
+  config:
+    activate:
+      on-profile: default
+
+  jpa:
+    show-sql: false
+
+logging:
+  level:
+    org.hibernate.type.descriptor.sql: off
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: develop
+
+  jpa:
+    show-sql: false
+
+logging:
+  level:
+    org.hibernate.type.descriptor.sql: off
+
+---
+
+spring:
+  config:
+    activate:
+      on-profile: qa
+
+  jpa:
+    show-sql: false
+
+logging:
+  level:
+    org.hibernate.type.descriptor.sql: off
+
+---
