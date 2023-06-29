@@ -40,3 +40,28 @@ logging:  # Log Setting
     rollingpolicy:
       file-name-pattern: "./logs/gpex-app-api.log.%d{yyyy-MM-dd}.%i"
       max-file-size: 100MB
+
+
+---
+
+# Develop Config
+spring:
+  config:
+    activate:
+      on-profile: develop
+
+  servlet:
+    multipart:
+      max-file-size: 30MB
+      max-request-size: 30MB
+
+#server:
+#  port: ${MOBILE_PORT}
+
+logging:  # Log Setting
+  file:
+    name: ./logs/gpex-app-api_dev.log
+  logback:
+    rollingpolicy:
+      file-name-pattern: "./logs/gpex-app-api_dev.log.%d{yyyy-MM-dd}.%i"
+      max-file-size: 100MB

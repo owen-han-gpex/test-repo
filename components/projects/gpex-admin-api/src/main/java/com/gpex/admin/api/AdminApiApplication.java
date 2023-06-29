@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
@@ -43,6 +45,15 @@ public class AdminApiApplication {
         resultMap.put("dataBaseEnums", Arrays.stream(DatabaseEnums.values()).collect(Collectors.toList()));
         resultMap.put("commonStringUtils", StringUtils.getCommon());
         resultMap.put("activeProfile", env.getActiveProfiles());
+        resultMap.put("fixedAt", ZonedDateTime.of(
+                2023,
+                6,
+                29,
+                16,
+                17,
+                0,
+                0,
+                ZoneId.systemDefault()));
 
         return ResponseEntity.ok(resultMap);
     }

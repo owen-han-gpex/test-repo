@@ -40,5 +40,29 @@ logging:  # Log Setting
     name: ./logs/gpex-front-api.log
   logback:
     rollingpolicy:
-      file-name-pattern: "./logs/gpex-front-api.log.%d{yyyy-MM-dd}.%i"
+      file-name-pattern: "./logs/gpex-admin-api.log.%d{yyyy-MM-dd}.%i"
+      max-file-size: 100MB
+
+---
+
+# Develop Config
+spring:
+  config:
+    activate:
+      on-profile: develop
+
+  servlet:
+    multipart:
+      max-file-size: 30MB
+      max-request-size: 30MB
+  mvc:
+    pathmatch:
+      matching-strategy: ant-path-matcher
+
+logging:  # Log Setting
+  file:
+    name: ./logs/gpex-admin-api_dev.log
+  logback:
+    rollingpolicy:
+      file-name-pattern: "./logs/gpex-admin-api_dev.log.%d{yyyy-MM-dd}.%i"
       max-file-size: 100MB
