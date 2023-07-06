@@ -46,7 +46,13 @@ public class AppApiApplication {
         resultMap.put("dataBaseEnums", Arrays.stream(DatabaseEnums.values()).collect(Collectors.toList()));
         resultMap.put("commonStringUtils", StringUtils.getCommon());
         resultMap.put("activeProfile", env.getActiveProfiles());
-        ZonedDateTime deployed = Year.of(2023).atMonth(7).atDay(5).atTime(15, 53).atZone(ZoneId.of("Asia/Seoul"));
+        ZonedDateTime deployed = Year
+                .of(2023)
+                .atMonth(7)
+                .atDay(6)
+                .atTime(13, 32)
+                .atZone(ZoneId.of("Asia/Seoul"));
+
         resultMap.put("deployed", deployed.toString());
 
         return ResponseEntity.ok(resultMap);
