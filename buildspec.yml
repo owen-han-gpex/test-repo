@@ -4,6 +4,8 @@ run-as: root
 phases:
   pre_build:
     commands:
+      - echo 'check docker version'
+      - docker -v
       - echo AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION
       - echo AWS_ACCOUNT_ID=$AWS_ACCOUNT_ID
       - echo AWS_DEFAULT_REGION=$AWS_DEFAULT_REGION
