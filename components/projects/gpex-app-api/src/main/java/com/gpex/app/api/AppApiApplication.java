@@ -50,7 +50,7 @@ public class AppApiApplication {
                 .of(2023)
                 .atMonth(7)
                 .atDay(7)
-                .atTime(15, 59)
+                .atTime(16, 19)
                 .atZone(ZoneId.of("Asia/Seoul"));
 
         resultMap.put("deployed", deployed.toString());
