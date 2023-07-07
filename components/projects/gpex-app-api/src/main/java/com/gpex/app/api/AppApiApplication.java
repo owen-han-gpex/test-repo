@@ -49,8 +49,8 @@ public class AppApiApplication {
         ZonedDateTime deployed = Year
                 .of(2023)
                 .atMonth(7)
-                .atDay(6)
-                .atTime(16, 29)
+                .atDay(7)
+                .atTime(15, 38)
                 .atZone(ZoneId.of("Asia/Seoul"));
 
         resultMap.put("deployed", deployed.toString());
